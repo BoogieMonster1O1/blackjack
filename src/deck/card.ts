@@ -36,7 +36,7 @@ export function generateDeck(): Card[] {
 export function generateDecks(count: number): Card[] {
 	const arr: Card[] = [];
 	for (let i = count; i > 0; i--) {
-		arr.concat(generateDeck());
+		arr.push(...generateDeck());
 	}
 	return arr;
 }
