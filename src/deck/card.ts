@@ -21,9 +21,9 @@ export class Card {
 
 export function generateSuit(suit: Suit) {
 	const arr: Card[] = [];
-    for (const face of CardFace.VALUES) {
-        arr.push(new Card(face, suit));
-    }
+	for (const face of CardFace.VALUES) {
+		arr.push(new Card(face, suit));
+	}
 	return arr;
 }
 
@@ -45,9 +45,9 @@ export function generateDecks(count: number): Card[] {
 
 export function shuffle(arr: Card[]): Card[] {
 	const newArr = [...arr];
-    for (let i: number = newArr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-    }
+	for (let i: number = newArr.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+	}
 	return newArr;
 }

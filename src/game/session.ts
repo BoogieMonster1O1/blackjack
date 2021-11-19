@@ -11,18 +11,18 @@ export class GameSession {
 	}
 
 	private reshuffle(): void {
-        this._deck = generateDecks(this._decks);
-    }
+		this._deck = generateDecks(this._decks);
+	}
 
 	public get decks(): number {
-        return this._decks;
-    }
+		return this._decks;
+	}
 
 	public get deck(): Card[] {
-        return this._deck;
-    }
+		return this._deck;
+	}
 
 	public get card(): Card {
-        return this._deck.pop();
-    }
+		return this._deck.pop();
+	}
 }
