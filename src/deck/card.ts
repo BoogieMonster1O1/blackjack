@@ -17,18 +17,20 @@ export class Card {
 	public get suit() {
 		return this._suit;
 	}
+}
 
-	public toString(): string {
-		return `[]`;
-	}
+export function generateSuit(suit: Suit) {
+	const arr: Card[] = [];
+    for (const face of CardFace.VALUES) {
+        arr.push(new Card(face, suit));
+    }
+	return arr;
 }
 
 export function generateDeck(): Card[] {
 	const arr: Card[] = [];
-	for (const face of CardFace.VALUES) {
-		for (const suit of Suit.VALUES) {
-			arr.push(new Card(face, suit));
-		}
+	for (const suit of Suit.VALUES) {
+		arr.push(...generateSuit(suit));
 	}
 	return arr;
 }
@@ -41,10 +43,9 @@ export function generateDecks(count: number): Card[] {
 	return arr;
 }
 
-// Shuffle the order of elements of an array
 export function shuffle(arr: Card[]): Card[] {
 	const newArr = [...arr];
-    for (let i = newArr.length - 1; i > 0; i--) {
+    for (let i: number = newArr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
     }

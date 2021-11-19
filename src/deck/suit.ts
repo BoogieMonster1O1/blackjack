@@ -3,7 +3,7 @@ export class Suit {
 	public static readonly HEARTS = new Suit("Hearts");
 	public static readonly SPADES = new Suit("Spades");
 	public static readonly DIAMONDS = new Suit("Diamonds");
-	public static readonly CLOVERS = new Suit("Clovers");
+	public static readonly CLUBS = new Suit("Clovers");
 	private readonly _name: String;
 
 	private constructor(name: String) {

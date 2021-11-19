@@ -1,6 +1,6 @@
 export class CardFace {
 	public static readonly VALUES: CardFace[] = [];
-	public static readonly ACE = new CardFace(11, "Ace");
+	public static readonly ACE = new CardFace(1, "Ace");
 	public static readonly TWO = new CardFace(2, "Two");
 	public static readonly THREE = new CardFace(3, "Three");
 	public static readonly FOUR = new CardFace(4, "Four");
@@ -10,9 +10,9 @@ export class CardFace {
 	public static readonly EIGHT = new CardFace(8, "Eight");
 	public static readonly NINE = new CardFace(9, "Nine");
 	public static readonly TEN = new CardFace(10, "Ten");
-	public static readonly JACK = new CardFace(11, "Jack");
-	public static readonly QUEEN = new CardFace(11, "Queen");
-	public static readonly KING = new CardFace(11, "King");
+	public static readonly JACK = new CardFace(10, "Jack");
+	public static readonly QUEEN = new CardFace(10, "Queen");
+	public static readonly KING = new CardFace(10, "King");
 	private readonly _value: number;
 	private readonly _name: string;
 

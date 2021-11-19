@@ -1,6 +1,11 @@
-import { generateDeck, generateDecks, shuffle } from '../src/deck/card';
+import { generateDeck, generateDecks, generateSuit, shuffle } from '../src/deck/card';
+import { Suit } from '../src/deck/suit';
 
 describe("Decks' lengths test", () => {
+	it("Should have 13 cards", () => {
+		const deck = generateSuit(Suit.HEARTS);
+		expect(deck.length).toBe(13);
+	});
     it("Should have 52 cards", () => {
         const deck = generateDeck();
         expect(deck.length).toBe(52);
