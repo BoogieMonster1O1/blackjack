@@ -1,9 +1,9 @@
-import { Card, generateDeck, generateSuit } from '../src/deck/card';
+import { Card, generateDeck, generateDecks, generateSuit } from '../src/deck/card';
 import { CardFace } from '../src/deck/card-face';
 import { Suit } from '../src/deck/suit';
 import { totalValuations } from '../src/game/value-util';
 
-describe("Should return correct valuation", () => {
+describe("Should return correct valuations", () => {
 	it("Should return correct valuation for two non-aces", () => {
 		const hand: Card[] = [
             new Card(CardFace.TWO, Suit.CLUBS),
@@ -154,5 +154,13 @@ describe("Should return correct valuation", () => {
 	it("Should return correct valuations for an entire deck", () => {
 		const hand: Card[] = generateDeck();
 		expect(totalValuations(hand)).toEqual([340, 350, 360, 370, 380]);
-	})
+	});
+	it("Should return correct valuations for two entire decks", () => {
+        const hand: Card[] = generateDecks(2);
+        expect(totalValuations(hand)).toEqual([680, 690, 700, 710, 720, 730, 740, 750, 760]);
+    });
+	it("Should return correct valuations for four entire decks", () => {
+        const hand: Card[] = generateDecks(4);
+        expect(totalValuations(hand)).toEqual([1360, 1370, 1380, 1390, 1400, 1410, 1420, 1430, 1440, 1450, 1460, 1470, 1480, 1490, 1500, 1510, 1520]);
+    });
 });
