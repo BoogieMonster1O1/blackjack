@@ -1,7 +1,56 @@
 import { Card, generateDeck, generateDecks, generateSuit } from '../src/deck/card';
 import { CardFace } from '../src/deck/card-face';
 import { Suit } from '../src/deck/suit';
-import { totalValuations } from '../src/game/value-util';
+import { getBestValue, isBlackjack, totalValuations } from '../src/game/value-util';
+
+describe("Should perform correct valuation operations", () => {
+	it("Should return that it is not a blackjack", () => {
+        const hand: Card[] = [
+			new Card(CardFace.ACE, Suit.CLUBS),
+			new Card(CardFace.TWO, Suit.CLUBS)
+		];
+        expect(isBlackjack(hand)).toBe(false);
+    });
+	it("Should return that it is a blackjack", () => {
+        const hand: Card[] = [
+            new Card(CardFace.ACE, Suit.CLUBS),
+            new Card(CardFace.JACK, Suit.CLUBS)
+        ];
+        expect(isBlackjack(hand)).toBe(true);
+    });
+	it("Should return best value of two aces as 12", () => {
+        const hand: Card[] = [
+            new Card(CardFace.ACE, Suit.CLUBS),
+            new Card(CardFace.ACE, Suit.CLUBS)
+        ];
+        expect(getBestValue(hand)).toBe(12);
+    });
+	it("Should return best value of two aces and a ten as 12", () => {
+        const hand: Card[] = [
+            new Card(CardFace.ACE, Suit.CLUBS),
+            new Card(CardFace.ACE, Suit.CLUBS),
+            new Card(CardFace.TEN, Suit.CLUBS)
+        ];
+        expect(getBestValue(hand)).toBe(12);
+    });
+	it("Should return best value of two aces and a five as 17", () => {
+        const hand: Card[] = [
+            new Card(CardFace.ACE, Suit.CLUBS),
+            new Card(CardFace.ACE, Suit.CLUBS),
+            new Card(CardFace.FIVE, Suit.CLUBS)
+        ];
+        expect(getBestValue(hand)).toBe(17);
+    });
+	it("Should return best value of two aces, a jack and six as 18", () => {
+        const hand: Card[] = [
+            new Card(CardFace.ACE, Suit.CLUBS),
+            new Card(CardFace.ACE, Suit.CLUBS),
+            new Card(CardFace.JACK, Suit.CLUBS),
+            new Card(CardFace.SIX, Suit.CLUBS)
+        ];
+        expect(getBestValue(hand)).toBe(18);
+    });
+});
 
 describe("Should return correct valuations", () => {
 	it("Should return correct valuation for two non-aces", () => {

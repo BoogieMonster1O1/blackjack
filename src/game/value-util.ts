@@ -12,7 +12,6 @@ export function absoluteValue(cards: Card[]) {
     return cards.reduce((sum, card) => sum + card.face.value, 0);
 }
 
-// Sum the values of the faces of the cards. If the cards have an ace, its value is either 1 or 11. Return an array of all possible valuations. There may be more than one ace
 export function totalValuations(cards: Card[]): number[] {
     const values = absoluteValue(cards);
     const aces = cards.filter(card => card.face.value === 1);
@@ -22,4 +21,18 @@ export function totalValuations(cards: Card[]): number[] {
     let values2 = values;
     const acesValues = aces.map(() => (values2 += 10));
     return [values, ...acesValues];
+}
+
+export function isBlackjack(hand: Card[]): boolean {
+    return hand.length === 2 && totalValuations(hand).some(value => value === 21);
+}
+
+export function isBust(hand: Card[]): boolean {
+    return totalValuations(hand).every(value => value > 21);
+}
+
+export function getBestValue(cards: Card[]): number {
+    const values = totalValuations(cards);
+    const max = Math.max(...values);
+    return max <= 21 ? max : values.some(it => it <= 21) ? Math.max(...values.filter(it => it <= 21)) : Math.min(...values);
 }
